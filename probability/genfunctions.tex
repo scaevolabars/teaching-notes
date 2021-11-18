@@ -14,14 +14,14 @@
 \begin{sol}
 	Воспользуемся cледующим свойством производящей функции:
 	\begin{equation}
-		G(0) = \Prob(X=0)  =  c (1 + 2s)^3 \lvert_{s=0} = c \\
-		G(1) = \sum_{k=0}^{\infty} \Prob(X=k) = 1  \rightarrow c (1 + 2s)^3 \lvert_{s=1} = 1 \rightarrow c =  \frac{1}{27}
+		G(0) = \Prob(X=0)  =  c (1 + 2s)^3 \bigg|_{s=0} = c \\
+		G(1) = \sum_{k=0}^{\infty} \Prob(X=k) = 1  \rightarrow c (1 + 2s)^3 \bigg|_{s=1}  = 1 \rightarrow c =  \frac{1}{27}
 	\end{equation} 
 
 	Теперь вспомвнив, что п.ф. это степенной ряд воспользуемся тем, что закон распреления можно однозначно восстановить продифференцировав п.ф., а именно 
 	\begin{align*}
-		\Prob(X=k) & = \frac{G^{(k)}(0)}{k!} \qquad  \Prob(X=1) = \frac{12c(2 s+1)^2}{1!} \lvert_{s=0} = \frac{12}{27} \\
-		  \Prob(X=2) & = \frac{48 c (1 + 2 s)}{2!} \lvert_{s=0} = \frac{6}{27} \qquad \Prob(X=3) = \frac{96c}{3!} \lvert_{s=0} = \frac{8}{27} \\
+		\Prob(X=k) & = \frac{G^{(k)}(0)}{k!} \qquad  \Prob(X=1) = \frac{12c(2 s+1)^2}{1!} \bigg|_{s=0}  = \frac{12}{27} \\
+		  \Prob(X=2) & = \frac{48 c (1 + 2 s)}{2!} \bigg|_{s=0} = \frac{6}{27} \qquad \Prob(X=3) = \frac{96c}{3!} \bigg|_{s=0} = \frac{8}{27} \\
 	\end{align*}
 
 	Теперь зададимся вопросом как меняется п.ф. при произвольных преобразованиях случайной величины $Y = H(X)$.
@@ -39,3 +39,26 @@
 	\end{equation}
 	
 \end{sol}	
+
+
+\begin{prb}
+	\hspace{1cm}
+	Выразить $\Expec\left(\frac{1}{X + 1}\right)$ как интеграл от п.ф. $X$ и найти его для $ X \sim Geom(p)$   $ X \sim Poiss(\lambda)$.
+\end{prb}	
+
+\begin{sol}
+	Попробуем проинтегрировать $G_{X}(s)$	
+	\begin{equation}
+	\operatorname{Re} \int_{0}^{1} \diff{s} G_{X}(s)  = \int_{0}^{1} \diff{s}   \sum_{k=0}^{\infty} \Prob(X=k) s^{k} = \sum_{k=0}^{\infty} \frac{1}{k + 1}\Prob(X=k) s^{k + 1} \bigg|^{1}_{0} = \Expec\left(\frac{1}{X + 1}\right)
+	\end{equation}
+
+	\begin{equation}
+	\operatorname{Re} \int_{0}^{1} \diff{s} G_{X_{Geom}}(s)  =  \operatorname{Re} \int_{0}^{1} \diff{s} \frac{1 - p}{1 - ps} = \frac{(p-1) \log (1-p)}{p}
+	\end{equation}
+
+	\begin{equation}
+	\operatorname{Re}	\int_{0}^{1} \diff{s} G_{X_{Poiss}}(s)  =  \operatorname{Re} \int_{0}^{1} \diff{s} e^{-\lambda(1-s)} = \frac{1-e^{-\lambda }}{\lambda }
+	\end{equation}
+
+
+\end{sol}
