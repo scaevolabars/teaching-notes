@@ -1,0 +1,41 @@
+
+\section{Производящие функции}
+
+
+\begin{prb}[Закон распределения и линейное преобразование]
+	\hspace{1cm}
+	\begin{enumerate}
+		\item Найти закон распределения с п.ф. $G(s) = c (1 + 2s)^3$
+		\item Найти п.ф. случайной величины $ 2X + 3 $, если $X$ cлучайная величина п.ф. $ G(s)$
+	\end{enumerate}
+	
+\end{prb}
+	
+\begin{sol}
+	Воспользуемся cледующим свойством производящей функции:
+	\begin{equation}
+		G(0) = \Prob(X=0)  =  c (1 + 2s)^3 \lvert_{s=0} = c \\
+		G(1) = \sum_{k=0}^{\infty} \Prob(X=k) = 1  \rightarrow c (1 + 2s)^3 \lvert_{s=1} = 1 \rightarrow c =  \frac{1}{27}
+	\end{equation} 
+
+	Теперь вспомвнив, что п.ф. это степенной ряд воспользуемся тем, что закон распреления можно однозначно восстановить продифференцировав п.ф., а именно 
+	\begin{align*}
+		\Prob(X=k) & = \frac{G^{(k)}(0)}{k!} \qquad  \Prob(X=1) = \frac{12c(2 s+1)^2}{1!} \lvert_{s=0} = \frac{12}{27} \\
+		  \Prob(X=2) & = \frac{48 c (1 + 2 s)}{2!} \lvert_{s=0} = \frac{6}{27} \qquad \Prob(X=3) = \frac{96c}{3!} \lvert_{s=0} = \frac{8}{27} \\
+	\end{align*}
+
+	Теперь зададимся вопросом как меняется п.ф. при произвольных преобразованиях случайной величины $Y = H(X)$.
+	\begin{equation}
+		G_{Y}(s) = G_{H(k)}(s) = \sum_{k=0}^{\infty} \Prob(X=k) s^{H(k)}
+	\end{equation}
+	Если $H(X)$  достаточно просто то $G_{Y}(s)$ можно выразить черзе $G_{X}(s)$.
+	Рассмотрим простейщий пример $Y = a + b X$
+	\begin{equation}
+		G_{Y}(s) = \Expec(s^Y) = \Expec(s^{a + b X}) = s^{a}\Expec(s^{b X}) = s^a G_{X}(s^b)
+	\end{equation}
+	Для случая из задачи имеем $a = 1, \quad b = 2$ 
+	\begin{equation}
+			G_{2X + 1}(s) = s G_{X}(s^2)
+	\end{equation}
+	
+\end{sol}	
